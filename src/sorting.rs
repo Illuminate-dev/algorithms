@@ -55,6 +55,18 @@ pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
     arr.copy_from_slice(&y[..]);
 }
 
+pub fn selection_sort<T: Ord>(arr: &mut [T]) {
+    for i in 0..arr.len() - 1 {
+        let mut min = i;
+        for j in i + 1..arr.len() {
+            if arr[j] < arr[min] {
+                min = j;
+            }
+        }
+        arr.swap(i, min);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -77,6 +89,14 @@ mod tests {
 
     #[test]
     fn test_bubble_sort() {
+        let mut arr = [5, 32, 56, 1, 3, -5];
+        bubble_sort(&mut arr);
+
+        assert_eq!(arr, [-5, 1, 3, 5, 32, 56]);
+    }
+
+    #[test]
+    fn test_selection_sort() {
         let mut arr = [5, 32, 56, 1, 3, -5];
         bubble_sort(&mut arr);
 
