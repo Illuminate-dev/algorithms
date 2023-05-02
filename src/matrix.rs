@@ -10,15 +10,6 @@ fn dot<T: Mul<Output = T> + Add<Output = T> + Default + Copy>(vec1: &[T], vec2: 
     out
 }
 
-fn mul_matrix(mat1: &[&[i32]], mat2: &[&[i32]]) -> Vec<Vec<i32>> {
-    let mut matrix = Vec::new();
-    for i in 0..mat1.len().min(mat2.len()) {
-        matrix.push(Vec::new());
-        for j in 0..mat1[0].len().min(mat2[0].len()) {}
-    }
-    matrix
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
