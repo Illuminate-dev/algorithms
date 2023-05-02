@@ -1,3 +1,6 @@
+/// O(n*lg(n))
+/// divides the problem into 2 subproblems of size n/2
+
 pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return;
@@ -33,4 +36,19 @@ pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
     let mut y = arr.to_vec();
     merge(&mut y[..], &arr[0..mid], &arr[mid..]);
     arr.copy_from_slice(&y[..]);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_merge_sort() {
+        let mut arr = [51, 23, 5, 1, -1];
+        let original = arr.clone();
+        merge_sort(&mut arr);
+        assert!(
+            crate::sorting::is_sorted(&arr) && crate::sorting::have_same_elements(&arr, &original)
+        );
+    }
 }

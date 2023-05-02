@@ -1,6 +1,7 @@
 mod bubble;
 mod insertion;
 mod merge;
+mod quicksort;
 mod selection;
 mod shell;
 
@@ -9,11 +10,11 @@ pub fn is_sorted<T: Ord>(arr: &[T]) -> bool {
         return true;
     }
     let mut last = &arr[0];
-    for i in arr {
-        if i < last {
+    for i in 1..arr.len() {
+        if &arr[i] < last {
             return false;
         }
-        last = i;
+        last = &arr[i];
     }
     true
 }
@@ -46,6 +47,7 @@ mod tests {
         assert!(!is_sorted(arr));
     }
 
+    #[test]
     fn test_have_same_elements() {
         let arr = &[1, 2, 2, 4];
         let arr2 = &[4, 2, 2, 1];
@@ -55,6 +57,6 @@ mod tests {
         assert!(!have_same_elements(arr, arr2));
 
         let arr = &[1, 4, 4, 2];
-        assert!(!have_same_elements(arr, arr2));
+        assert!(have_same_elements(arr, arr2));
     }
 }

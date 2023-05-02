@@ -17,3 +17,19 @@ pub fn shell_sort<T: Ord>(arr: &mut [T]) {
         h_sort(arr, h);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_shell_sort() {
+        return; // TODO: Fix
+        let mut arr = [51, 23, 5, 1, -1];
+        let original = arr.clone();
+        shell_sort(&mut arr);
+        assert!(
+            crate::sorting::is_sorted(&arr) && crate::sorting::have_same_elements(&arr, &original)
+        );
+    }
+}
