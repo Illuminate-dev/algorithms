@@ -5,4 +5,5 @@ mod prod_safe_deque;
 mod search;
 mod sorting;
 mod stack;
+mod trees;
 mod unsafe_queue;
