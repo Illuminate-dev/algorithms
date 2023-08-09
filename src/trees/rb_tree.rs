@@ -1,4 +1,4 @@
-use std::ptr::NonNull;
+use std::{fmt, ptr::NonNull};
 
 struct RedBlackTree<T: PartialOrd> {
     root: Link<T>,

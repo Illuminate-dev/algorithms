@@ -1,4 +1,5 @@
 mod bubble;
+mod heapsort;
 mod insertion;
 mod merge;
 mod quicksort;
