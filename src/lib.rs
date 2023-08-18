@@ -6,4 +6,5 @@ mod search;
 mod sorting;
 mod stack;
 mod trees;
+mod unionfind;
 mod unsafe_queue;
