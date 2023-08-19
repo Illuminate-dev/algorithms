@@ -1,15 +1,15 @@
 use std::ops::{Index, IndexMut};
 
-struct MaxHeap<T: PartialOrd> {
+pub struct MaxHeap<T: PartialOrd> {
     data: Vec<T>,
 }
 
 impl<T: PartialOrd> MaxHeap<T> {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { data: Vec::new() }
     }
 
-    fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
+    pub fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
         let mut heap = Self::new();
         for elem in iter {
             heap.push(elem);
@@ -17,11 +17,11 @@ impl<T: PartialOrd> MaxHeap<T> {
         heap
     }
 
-    fn len(&self) -> usize {
+    pub fn len(&self) -> usize {
         self.data.len()
     }
 
-    fn heapify(&mut self, index: usize) {
+    pub fn heapify(&mut self, index: usize) {
         let left = Self::left(index);
         let right = Self::right(index);
 
@@ -41,7 +41,7 @@ impl<T: PartialOrd> MaxHeap<T> {
         }
     }
 
-    fn push(&mut self, elem: T) {
+    pub fn push(&mut self, elem: T) {
         self.data.push(elem);
         let mut index = self.len() - 1;
         while index > 0 && self[index] > self[Self::parent(index)] {
@@ -50,7 +50,7 @@ impl<T: PartialOrd> MaxHeap<T> {
         }
     }
 
-    fn pop_max(&mut self) -> Option<T> {
+    pub fn pop_max(&mut self) -> Option<T> {
         if self.len() == 0 {
             return None;
         }
@@ -76,6 +76,10 @@ impl<T: PartialOrd> MaxHeap<T> {
     fn right(index: usize) -> usize {
         2 * index + 2
     }
+
+    pub fn is_empty(&self) -> bool {
+        self.data.is_empty()
+    } 
 }
 
 impl<T: PartialOrd> Index<usize> for MaxHeap<T> {
