@@ -1,3 +1,3 @@
 mod bin_tree;
-mod heap;
+pub mod heap;
 mod rb_tree;
