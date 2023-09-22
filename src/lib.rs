@@ -1,4 +1,5 @@
 mod bad_deque;
+mod hash_map;
 mod linked_list_stack;
 mod matrix;
 mod prod_safe_deque;
